@@ -30,8 +30,8 @@ size: $(TARGET_DIR)/$(TARGET)
 	$(SZ) $<
 	@echo $(shell echo \
 		"obase=10; ibase=16;" \
-		"$(shell $(NM) $< | grep _stack_start | cut -d ' ' -f 1) -" \
-		"$(shell $(NM) $< | grep __sheap | cut -d ' ' -f 1)" \
+		"$(shell $(NM) $< | grep _stack_start | cut -d ' ' -f 1 | tr '[:lower:]' '[:upper:]') -" \
+		"$(shell $(NM) $< | grep __sheap | cut -d ' ' -f 1 | tr '[:lower:]' '[:upper:]')" \
 	| bc) byte is left for heap + stack.
 
 .PHONY: clean
