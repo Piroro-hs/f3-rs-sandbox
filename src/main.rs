@@ -3,6 +3,7 @@
 
 mod print;
 
+use cortex_m::asm;
 use cortex_m_rt::entry;
 use panic_halt as _;
 use stm32f3xx_hal::{self as hal, pac, prelude::*};
@@ -59,5 +60,5 @@ fn main() -> ! {
     println!();
     println!("Done!");
 
-    loop {}
+    asm::udf();
 }
