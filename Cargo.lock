@@ -281,7 +281,7 @@ dependencies = [
 [[package]]
 name = "stm32f3xx-hal"
 version = "0.5.0"
-source = "git+https://github.com/Piroro-hs/stm32f3xx-hal?branch=i2c#9f5566a3e0ea53246890c7bd6547c9b99f938450"
+source = "git+https://github.com/stm32-rs/stm32f3xx-hal?rev=92d9357#92d9357805b1bea0ef9e674f60db1bcff8d1f8df"
 dependencies = [
  "bare-metal",
  "cast",
