@@ -10,4 +10,4 @@ edition = "2018"
 cortex-m = { version = "0.6.4", features = ["inline-asm"] }
 cortex-m-rt = { version = "0.6.13", features = ["device"] }
 panic-halt = "0.2.0"
-stm32f3xx-hal = { version = "0.6.0", features = ["rt", "stm32f303x8"] }
+stm32f3xx-hal = { git = "https://github.com/Piroro-hs/stm32f3xx-hal", rev = "cb86bf5", features = ["rt", "stm32f303x8"] }

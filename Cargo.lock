@@ -272,8 +272,7 @@ dependencies = [
 [[package]]
 name = "stm32f3xx-hal"
 version = "0.6.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a96e54d3ba219c0d7d68e79fc72afd784972727e32c32bcae0178f2c132b1375"
+source = "git+https://github.com/Piroro-hs/stm32f3xx-hal?rev=cb86bf5#cb86bf57427c16261596d21c36d69ceb965c26ae"
 dependencies = [
  "bare-metal",
  "cfg-if",
@@ -285,6 +284,7 @@ dependencies = [
  "paste",
  "rtcc",
  "stm32f3",
+ "typenum",
  "void",
 ]
 
