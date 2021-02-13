@@ -74,6 +74,8 @@ fn main() -> ! {
 
     let mut scl = true;
     let mut sda = true;
+    let mut bits = 0_u8;
+    let mut bits_cnt = 0;
     for i in 0..I2C_LOGS_CNT.load(Ordering::Acquire) {
         let log = unsafe { I2C_LOGS[i] }.unwrap();
         println!("{:?}", log);
@@ -81,6 +83,14 @@ fn main() -> ! {
             I2cLog::SclRise => {
                 scl = true;
                 println!("{:1}", sda as u8);
+                if bits_cnt == 8 {
+                    println!("{:02X}, ACK {}", bits, !sda);
+                    bits = 0;
+                    bits_cnt = 0;
+                } else {
+                    bits |= (sda as u8) << 7 - bits_cnt;
+                    bits_cnt += 1;
+                }
             },
             I2cLog::SclFall => {
                 scl = false;
@@ -95,6 +105,8 @@ fn main() -> ! {
                 sda = false;
                 if scl {
                     println!("S");
+                    bits = 0;
+                    bits_cnt = 0;
                 }
             },
         }
