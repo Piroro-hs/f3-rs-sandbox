@@ -56,7 +56,8 @@ fn main() -> ! {
     );
     pins.0.internal_pull_up(&mut gpiob.pupdr, true);
     pins.1.internal_pull_up(&mut gpiob.pupdr, true);
-    let mut i2c = hal::i2c::I2c::new(dp.I2C1, pins, 100.khz(), clocks, &mut rcc.apb1);
+    // let mut i2c = hal::i2c::I2c::new(dp.I2C1, pins, 100.khz(), clocks, &mut rcc.apb1); // missing logs
+    let mut i2c = hal::i2c::I2c::new(dp.I2C1, pins, 1600.hz(), clocks, &mut rcc.apb1);
 
     unsafe { (*pac::RCC::ptr()).apb2enr.modify(|_, w| w.syscfgen().set_bit()) };
     dp.SYSCFG.exticr2.modify(|_, w| w.exti6().pb6().exti7().pb7());
